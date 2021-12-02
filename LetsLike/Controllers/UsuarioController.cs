@@ -15,7 +15,7 @@ namespace LetsLike.Controllers
     [Produces("application/json")]
     [ApiController]
     [Route("api/[controller]")]
-    // [Authorize]
+    // [Authorize] (implementar)
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
@@ -26,6 +26,8 @@ namespace LetsLike.Controllers
             _usuarioService = usuarioService;
             _mapper = mapper;
         }
+
+        //COMENTÁRIOS XML:
 
         // POST api/usuario
         /// <summary>
@@ -48,10 +50,11 @@ namespace LetsLike.Controllers
         /// <returns>Usuário que foi inserido na base</returns>
         /// <response code="201">Retorna o novo item criado</response>
         /// <response code="400">Se o item não for criado</response> 
+        
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<Usuario> Post([FromBody] UsuarioDto value)
+        [ProducesResponseType(StatusCodes.Status400BadRequest)] //qnd eu coloco a response aqui, possosó tratá-la no corpo
+        public ActionResult<Usuario> Post([FromBody] UsuarioDto value)  //não posso deixar as infos do usuario expostas, então crio um DTO
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -62,7 +65,7 @@ namespace LetsLike.Controllers
                 Username = value.Username,
                 Email = value.Email,
                 Senha = value.Senha,
-
+                //n preciso salvar a confirmação de senha, só preciso garantir no front q as senhas estejam iguais
             };
 
            var response = _usuarioService.SaveOrUpdate(usuario);
@@ -92,7 +95,7 @@ namespace LetsLike.Controllers
             var response = _usuarioService.FindAllUsuarios();
             if(response != null)
             {
-                return Ok(response.Select(x => _mapper.Map<Usuario>(x)).ToList());
+                return Ok(response.Select(x => _mapper.Map<Usuario>(x)).ToList()); //mapper: mapeia todas as dependências que a entidade tem (traz n só os dados do usuario, mas dos projs. q ele deu like tb, por ex.)
             }
             else
             {

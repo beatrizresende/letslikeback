@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace LetsLike.Interfaces
 {
-    public interface IProjetoService
+    public interface IUsuarioLikeProjetoService
     {
-        Projeto SaveOrUpdate(Projeto projeto);
-
-        Projeto LikeProjeto(UsuarioLikeProjeto like);
+        UsuarioLikeProjeto SaveOrUpdate(UsuarioLikeProjeto like);
     }
 }

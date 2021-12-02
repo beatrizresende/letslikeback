@@ -8,7 +8,7 @@ namespace LetsLike.DTO
 {
     public class UsuarioDto
     {
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório")] //substitui o {nº} pelo parâmetro (no caso, o parâmetro é a prop q vem abaixo. outro ex.: [Required(ErrorMessage = "O campo {0} e {1} são obrigatório", prop0, prop1)]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
@@ -21,7 +21,8 @@ namespace LetsLike.DTO
         public string Senha { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [Compare("Senha", ErrorMessage = "As senhas não conferem.")]
+        //comparar os 2 campos de senha
+        [Compare("Senha", ErrorMessage = "As senhas não conferem.")]  //[Compare("campo a ser comparado", ErrorMessage = "mensagem de erro")] (acima da prop a ser conferida c/ a outra)
         public string ConfirmaSenha { get; set; }
 
     }

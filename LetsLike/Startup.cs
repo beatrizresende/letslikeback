@@ -38,7 +38,7 @@ namespace LetsLike
               options => options.
               UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            // TODO adicionar o contexto ao escopo inicial
+            // TODO adicionar o contexto ao escopo inicial - adicionando o contexto ao startup (tem que estar setado aqui senão ele n vai achá-lo
             services.AddDbContext<LetsLikeContext>();
 
             //TODO indicando acessos ao HTTP Context para trabalhar com os retornos http
@@ -55,6 +55,7 @@ namespace LetsLike
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gerador de Like de Projetos", Version = "v1" });
+                //configurando a adição de comentários XML:
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
@@ -71,7 +72,7 @@ namespace LetsLike
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
+                app.UseSwagger(); //configuração do swagger
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LetsLike v1"));
             }
 
@@ -88,6 +89,7 @@ namespace LetsLike
         }
 
         // TODO método criado para instanciar a factory
+        //gerando um método RegisterServices privado pq n é boa prática chamar uma classe dentro de outra, principalmente dentro de um método void
         private void RegisterServicesPrivate(IServiceCollection services)
         {
             Factory.RegisterServices(services);

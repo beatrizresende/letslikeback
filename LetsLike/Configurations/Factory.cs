@@ -10,12 +10,13 @@ namespace LetsLike.Configurations
 {
     public class Factory
     {
-        public static void RegisterServices(IServiceCollection services)
+        public static void RegisterServices(IServiceCollection services) //ao invés de fzr a config. dos serviços no startup, faço isolado na Factory
         {
 
-            // TODO adicionar as referencias de services com as referencias de interfaces
+            //setando a interface da service c/ a service
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IProjetoService, ProjetoService>();
+            services.AddScoped<IUsuarioLikeProjetoService, UsuarioLikeProjetoService>();
 
         }
     }

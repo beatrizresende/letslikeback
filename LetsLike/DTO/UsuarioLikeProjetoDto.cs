@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace LetsLike.DTO
 {
-    public class ProjetoDto
+    public class UsuarioLikeProjetoDto
     {
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public string Nome { get; set; }
+        public int IdUsuarioLike { get; set; }
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public string URL { get; set; }
-        public string Imagem { get; set; }
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public int IdUsuarioCadastro { get; set; }
+        public int IdProjetoLike { get; set; }
     }
 }

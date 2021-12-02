@@ -11,7 +11,7 @@ namespace LetsLike.Data
 {
     public class LetsLikeContext : DbContext
     {
-        // TODO instancia das models 
+        // TODO instância das models no db
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Projeto> Projetos { get; set; }
         public DbSet<UsuarioLikeProjeto> UsuariosLikeProjetos { get; set; }
@@ -23,9 +23,9 @@ namespace LetsLike.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                   var connection = @"Server=ARKMF98769\SQLEXPRESS;Database=letsLike;Trusted_Connection=True;";
+                   var connection = @"Server=A4APHKB\\SQLEXPRESS;Database=LetsLike;Trusted_Connection=True;";
 
-                    optionsBuilder.UseSqlServer(connection);
+                optionsBuilder.UseSqlServer(connection);
             }
         }
 

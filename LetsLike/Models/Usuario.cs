@@ -22,7 +22,7 @@ namespace LetsLike.Models
         public string Username { get; set; }
         [Column("SENHA"), Required]
         public string Senha { get; set; }
-        // TODO CRIADO VIRTUALMENTE PARA CONSEGUIRMOS VINCULAR O USUARIO AO PROJETO
+        //vínculo do Usuario com o Projeto - virtual pq o usuario pode ou não ter projeto, então essa lista pode ou não existir
         public virtual ICollection<Projeto> Projeto { get; set; }
         public virtual ICollection<UsuarioLikeProjeto> UsuarioLikeProjeto { get; set; }
     }

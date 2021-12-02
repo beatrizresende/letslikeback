@@ -18,8 +18,8 @@ namespace LetsLike.Models
         [Column("ID_USUARIO_LIKE"), Required]
         [ForeignKey("ID_USUARIO_LIKE")]
         public int IdUsuarioLike { get; set; }
+        //ProjetoLike & IdProjetoLike: um vínculo forte, pq ao mesmo tempo q vou pegar a Id, tb vou pegar o obj. - isso tb bloqueia um projeto de ser add caso ele não exista em Projeto
         public Projeto ProjetoLike { get; set; }
-
         [Column("ID_PROJETO_LIKE"), Required]
         [ForeignKey("ID_PROJETO_LIKE")]
         public  int IdProjetoLike { get; set; }

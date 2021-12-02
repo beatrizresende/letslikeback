@@ -22,6 +22,7 @@ namespace LetsLike.Models
         public string Imagem { get; set; }
         [Column("LIKE_CONTADOR"), Required]
         public int LikeContador { get; set; }
+        //vínculo com a tabela de Usuario
         [Column("ID_USUARIO_CADASTRO"), Required]
         public Usuario UsuarioCadastro { get; set; }
         [ForeignKey("ID_USUARIO_CADASTRO"), Required]

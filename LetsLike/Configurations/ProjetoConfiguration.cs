@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LetsLike.Configurations
 {
-    public class ProjetoConfiguration : IEntityTypeConfiguration<Projeto>
+    public class ProjetoConfiguration : IEntityTypeConfiguration<Projeto> //faz a modelagem p/ executar as migrations
     {
         public void Configure(EntityTypeBuilder<Projeto> builder)
         {

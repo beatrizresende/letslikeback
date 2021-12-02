@@ -5,6 +5,7 @@ namespace LetsLike.Interfaces
 {
     public interface IUsuarioService
     {
+        //salvar o usuario
         Usuario SaveOrUpdate(Usuario usuario);
 
         // TODO a titulo de boas práticas não é bacana colocar o nome da Entidade no método
